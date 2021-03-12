@@ -1,0 +1,27 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/cart.css">
+</head>
+
+<body>
+<%- include('../includes/navigation.ejs') %>
+
+<main>
+    <div class="grid">
+
+        <% orders.forEach(function(order) { %>
+            <div class="card">
+                <div class="card__header">
+                    <h3><%= order.title %></h3>
+                </div>
+                <img class="card__image" src="<%= order.image %>" alt="<%= order.title %>">
+                <div class="card__content">
+                    <h4>$ <%= order.price %></h4>
+                    <h4>Qt Ord: <%= order.quantity %></h4>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+   
+</main>
+<%- include('../includes/end.ejs') %>

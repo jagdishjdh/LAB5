@@ -1,0 +1,34 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/cart.css">
+</head>
+
+<body>
+<%- include('../includes/navigation.ejs') %>
+
+<main>
+    <h2>Credits available: <%= credit %></h2>
+    <form action="/orders" method="POST">
+        <Button class="btn" type="submit">Buy</Button>
+    </form>
+    <div class="grid">
+    
+        <% items.forEach(function(item) { %>
+            <div class="card">
+                <div class="card__header">
+                    <h3><%= item.title %></h3>
+                </div>
+                <img class="card__image" src="<%= item.image %>" alt="<%= item.title %>">
+                <div class="card__content">
+                    <h4>$ <%= item.price %></h4>
+                    <h4>Qt Ord: <%= item.quantity %></h4>
+                </div>
+                <div class="card__actions">
+                    <Button class="btn" onclick="goto('/cart/remove/<%= item.id %>')">Remove from Cart</Button>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+   
+</main>
+<%- include('../includes/end.ejs') %>

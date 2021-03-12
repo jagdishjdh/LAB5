@@ -1,0 +1,33 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/cart.css">
+</head>
+
+<body>
+<%- include('../includes/navigation.ejs') %>
+
+<main>
+    <div class="grid">
+
+        <% products.forEach(function(product) { %>
+            <div class="card">
+                <div class="card__header">
+                    <h3><%= product.title %></h3>
+                </div>
+                <img class="card__image" src="<%= product.image %>" alt="<%= product.title %>">
+                <div class="card__content">
+                    <h4>Price: <%= product.price %></h4>
+                    <h4>Quantity: <%= product.quantity %></h4>
+                </div>
+                <div class="card__actions">
+                    <form class="card-form" action="/cart" method="POST">
+                        <input type="hidden" name="itemid" value="<%= product.id %>">
+                        <Button class="btn" type="submit">Add to Cart</Button>
+                    </form>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+   
+</main>
+<%- include('../includes/end.ejs') %>
